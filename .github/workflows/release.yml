@@ -1,0 +1,32 @@
+# Workflow name for GitHub Actions
+name: Build and Release Dataist OS
+
+# Trigger the workflow only when a new version tag (e.g., v0.1.0) is pushed
+on:
+  push:
+    tags:
+      - 'v*'
+
+jobs:
+  build:
+    # Use the latest Ubuntu runner
+    runs-on: ubuntu-latest
+    steps:
+      # Checkout the repository content
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      # Build the Docker image and run the build process to generate the ISO
+      # The privileged flag is required for mkarchiso to function properly
+      - name: Build ISO using Docker
+        run: |
+          docker build -t dataist-builder .
+          docker run --privileged -v $(pwd)/out:/dataist/out dataist-builder
+
+      # Create a new GitHub Release and upload the generated ISO file
+      - name: Create Release
+        uses: softprops/action-gh-release@v1
+        with:
+          files: out/*.iso
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

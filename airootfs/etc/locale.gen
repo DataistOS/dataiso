@@ -1,0 +1,5 @@
+# File: locale.gen
+# Description: Configuration file for generating system locales.
+# Note: Uncomment required locales to enable them (e.g., en_US.UTF-8 UTF-8).
+# /etc/locale.gen
+en_US.UTF-8 UTF-8

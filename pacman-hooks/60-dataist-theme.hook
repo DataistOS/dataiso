@@ -1,0 +1,3 @@
+# File: 60-dataist-theme.hook
+# Description: Hook for automatic theme application.
+# Note: Re-applies Asha Design assets after UI/Graphics package updates.

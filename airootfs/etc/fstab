@@ -1,0 +1,3 @@
+# File: fstab
+# Description: Static information about the filesystems.
+# Note: Defines how disk partitions are mounted at boot time.

@@ -1,0 +1,60 @@
+# --- Core System ---
+base
+linux
+linux-firmware
+mkinitcpio
+
+# --- Bootloader ---
+grub
+efibootmgr
+
+# --- Networking ---
+networkmanager
+iproute2
+dhclient
+wpa_supplicant
+
+# --- Essential Utilities ---
+bash
+vim
+nano
+git
+curl
+wget
+procps-ng
+util-linux
+
+# --- Systemd Management ---
+systemd
+systemd-sysvcompat
+
+# --- File System Support ---
+dosfstools
+mtools
+
+# --- Graphics & Display ---
+mesa
+xf86-video-intel
+xf86-video-amdgpu
+nvidia
+nvidia-utils
+
+# --- Wayland & Desktop ---
+wayland
+hyprland
+waybar
+dunst
+kitty
+rofi-wayland
+sddm
+
+# Build output and temporary files
+work/
+out/
+.tmp/
+*.iso
+*.img
+*.log
+
+# System files that should not be tracked (if any)
+.DS_Store

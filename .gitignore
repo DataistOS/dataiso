@@ -1,0 +1,40 @@
+# --- Build artifacts ---
+# Generated files from archiso build process
+work/
+out/
+
+# --- Temporary files ---
+# Editor and system temporary files
+*.tmp
+*~
+*.swp
+*.swo
+
+# --- IDE and Editor configurations ---
+# VSCode settings and environment files
+.vscode/
+# IntelliJ / WebStorm project files
+.idea/
+*.iml
+
+# --- System and OS specific ---
+# Backup files and generic OS trash
+*.bak
+.DS_Store
+Thumbs.db
+
+# --- Docker and Containerization ---
+# If you use docker-compose or specific data volumes
+.docker-container-data/
+*.log
+
+# --- Documentation (Sphinx/Docs) ---
+# Sphinx generated documentation artifacts
+docs/_build/
+docs/_autosummary/
+docs/api/generated/
+docs/doctrees/
+
+# --- Project specific ---
+# Specific project generated artifacts
+/packages.x86_64.bak

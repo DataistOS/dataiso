@@ -1,0 +1,23 @@
+iso_name: dataist-os
+iso_label: DATAIST_2026
+iso_publisher: Dataist Project
+iso_application: Dataist Infrastructure Factory
+iso_version: 0.1.0
+install_dir: arch
+buildmodes:
+  - iso
+bootmodes:
+  - bios.syslinux.mbr
+  - bios.syslinux.eltorito
+  - uefi-x64.systemd-boot.esp
+  - uefi-x64.systemd-boot.eltorito
+file_permissions:
+  - path: /usr/local/bin/setup.sh
+    mode: 0755
+  - path: /usr/local/bin/bridge.sh
+    mode: 0755
+  - path: /usr/local/bin/init.sh
+    mode: 0755
+
+services:
+      - systemd: dataist-setup.service
