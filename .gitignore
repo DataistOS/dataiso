@@ -3,6 +3,10 @@
 work/
 out/
 
+# Generated files and packages from ecosystem .deb build pipeline
+ecosystem-build/artifacts/
+*.deb
+
 # --- Temporary files ---
 # Editor and system temporary files
 *.tmp
@@ -36,5 +40,4 @@ docs/api/generated/
 docs/doctrees/
 
 # --- Project specific ---
-# Specific project generated artifacts
 /packages.x86_64.bak

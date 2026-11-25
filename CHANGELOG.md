@@ -1,6 +1,15 @@
 # Changelog
 
-All notable changes to this project will be documented in this file.
+## [0.2.0] - 2026-11-25
+
+### Added
+- Added `ecosystem-build/build-all-deb.sh` to discover sibling ecosystem repositories, validate `VERSION` files, build Flutter Linux release bundles, and package `.deb` files into `ecosystem-build/artifacts/deb/` with a summary report (`build-report.txt`).
+- Added `ecosystem-build/targets.conf` as a centralized configuration file for ecosystem build targets, starting with `daftarche`.
+
+### Changed
+- Updated `build.sh` to run the transitional ecosystem `.deb` build step before ISO generation and check for `mkarchiso` availability on the host system.
+- Updated `.gitignore` to ignore Archiso build directories (`work/`, `out/`), ecosystem build artifacts (`ecosystem-build/artifacts/`), and generated `*.deb` packages.
+- Bumped `VERSION` from `0.1.0` to `0.2.0`.
 
 ## [0.1.0] - 2026-07-19
 
