@@ -1,6 +1,9 @@
 #!/usr/bin/env bash
-# build.sh - Dataist OS Builder
-# Description: Automates ecosystem .deb packaging (transitional) and ISO generation for Dataist OS.
+#
+# Orchestrates ecosystem .deb packaging and ISO image generation for Dataist OS.
+#
+# Runs build-all-deb.sh (when BUILD_DEB_ECOSYSTEM=1) before invoking
+# mkarchiso to build the target ISO image under work/ and out/.
 
 set -euo pipefail
 
@@ -9,6 +12,7 @@ ECOSYSTEM_SCRIPT="$SCRIPT_DIR/ecosystem-build/build-all-deb.sh"
 
 BUILD_DEB_ECOSYSTEM="${BUILD_DEB_ECOSYSTEM:-1}"
 
+# ISO generation via mkarchiso requires root privileges.
 if [[ $EUID -ne 0 ]]; then
     echo "Error: This script must be run as root."
     exit 1
@@ -17,6 +21,7 @@ fi
 if [[ "$BUILD_DEB_ECOSYSTEM" == "1" ]]; then
     if [[ -x "$ECOSYSTEM_SCRIPT" ]]; then
         echo "Starting ecosystem .deb build..."
+        # Run as the original non-root sudo caller so user Flutter/Pub paths apply.
         if [[ -n "${SUDO_USER:-}" && "$SUDO_USER" != "root" ]]; then
             su - "$SUDO_USER" -c "PATH=\"\$PATH\" bash '$ECOSYSTEM_SCRIPT'"
         else
@@ -27,6 +32,7 @@ if [[ "$BUILD_DEB_ECOSYSTEM" == "1" ]]; then
     fi
 fi
 
+# Allow running .deb packaging on non-Arch/non-mkarchiso hosts without failing.
 if ! command -v mkarchiso >/dev/null 2>&1; then
     echo "Warning: 'mkarchiso' is not installed on this host. Skipping ISO build step."
     echo "Ecosystem .deb artifacts (if built) are available in: $SCRIPT_DIR/ecosystem-build/artifacts/deb/"

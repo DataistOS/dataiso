@@ -1,5 +1,16 @@
 # Changelog
 
+## [0.2.1] - 2026-11-26
+
+### Added
+- Enabled `datapack` (`v0.6.1`, Flutter Linux target) in `ecosystem-build/targets.conf` for automated `.deb` packaging alongside `daftarche` (`v0.4.2`).
+- Added `ONLY_TARGETS` filtering support and preserved user Flutter/Pub environment paths (`HOME`, `PUB_CACHE`, and tool `PATH` entries) when invoked via `sudo`/`su`.
+
+### Changed
+- Updated `run_flutter_pub_get` in `ecosystem-build/build-all-deb.sh` to run `flutter pub get` through `proxychains` (`proxychains4` when available) to avoid network-level `403` errors and filter noisy `proxychains3` `ld.so` preload warnings.
+- Enhanced terminal output formatting and added Google-style shell documentation comments across `build.sh` and `ecosystem-build/build-all-deb.sh`.
+- Bumped project version in `VERSION` to `0.2.1`.
+
 ## [0.2.0] - 2026-11-25
 
 ### Added
